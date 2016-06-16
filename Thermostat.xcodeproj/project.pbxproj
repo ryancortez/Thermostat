@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		942942031D13104A0032D1AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 942942021D13104A0032D1AF /* main.m */; };
 		942942061D13104A0032D1AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 942942051D13104A0032D1AF /* AppDelegate.m */; };
-		942942091D13104A0032D1AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942942081D13104A0032D1AF /* ViewController.m */; };
+		942942091D13104A0032D1AF /* ThermostateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942942081D13104A0032D1AF /* ThermostateViewController.m */; };
 		9429420C1D13104A0032D1AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9429420A1D13104A0032D1AF /* Main.storyboard */; };
 		9429420E1D13104A0032D1AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9429420D1D13104A0032D1AF /* Assets.xcassets */; };
 		942942111D13104A0032D1AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */; };
@@ -20,8 +20,8 @@
 		942942021D13104A0032D1AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		942942041D13104A0032D1AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		942942051D13104A0032D1AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		942942071D13104A0032D1AF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		942942081D13104A0032D1AF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		942942071D13104A0032D1AF /* ThermostateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThermostateViewController.h; sourceTree = "<group>"; };
+		942942081D13104A0032D1AF /* ThermostateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThermostateViewController.m; sourceTree = "<group>"; };
 		9429420B1D13104A0032D1AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9429420D1D13104A0032D1AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		942942101D13104A0032D1AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,8 +60,8 @@
 			children = (
 				942942041D13104A0032D1AF /* AppDelegate.h */,
 				942942051D13104A0032D1AF /* AppDelegate.m */,
-				942942071D13104A0032D1AF /* ViewController.h */,
-				942942081D13104A0032D1AF /* ViewController.m */,
+				942942071D13104A0032D1AF /* ThermostateViewController.h */,
+				942942081D13104A0032D1AF /* ThermostateViewController.m */,
 				9429420A1D13104A0032D1AF /* Main.storyboard */,
 				9429420D1D13104A0032D1AF /* Assets.xcassets */,
 				9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */,
@@ -149,7 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				942942091D13104A0032D1AF /* ViewController.m in Sources */,
+				942942091D13104A0032D1AF /* ThermostateViewController.m in Sources */,
 				942942061D13104A0032D1AF /* AppDelegate.m in Sources */,
 				942942031D13104A0032D1AF /* main.m in Sources */,
 			);
