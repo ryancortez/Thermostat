@@ -10,26 +10,73 @@
 
 @interface ThermostateViewController ()
 
+#pragma mark - Properties
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *temperatureUnitSwitchSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 @property (weak, nonatomic) IBOutlet UISlider *temperatureSliderOutlet;
 
+
 @end
 
 @implementation ThermostateViewController
+
+@synthesize locationManager;
 
 NSInteger const celsiusUpperBound = 32;
 NSInteger const celsiusLowerBound = -6;
 NSInteger const fahrenheitUpperBound = 90;
 NSInteger const fahrenheitLowerBound = 20;
 
-// Do this work right before the view appears
+
+#pragma mark - Lifecycle
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
+
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     // Make sure the temperature label is updated to the current slider temperature
     int value = (int) self.temperatureSliderOutlet.value;
     self.temperatureLabel.text = [NSString stringWithFormat:@"%d", value];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self. locationManager stopUpdatingLocation];
+}
+
+
+#pragma mark - Location Methods
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"%@", @"Core location has a position.");
+}
+- (void) locationManager:(CLLocationManager *)manager
+        didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", @"Core location can't get a fix.");
+}
+
+
+- (void) getLocationData {
+    CLLocation *curPos = locationManager.location;
+    NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
+    NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
+    NSLog(@"Lat: %@", latitude);
+    NSLog(@"Long: %@", longitude);
+}
+
+
+#pragma mark - Updatng View Methods
+
+- (void) updateLocationView {
+    
 }
 
 // When the segemented control is pressed

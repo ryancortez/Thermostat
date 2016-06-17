@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ThermostateViewController : UIViewController
+@interface ThermostateViewController : UIViewController <CLLocationManagerDelegate>
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
