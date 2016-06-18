@@ -101,6 +101,7 @@ NSInteger const fahrenheitLowerBound = 20;
     
     // You left off here. You read the documentation and it stated that if you used the __bool keyword, it would update the value of the block
     __block NSMutableDictionary *jsonDictionary = [[NSMutableDictionary alloc] init];
+    __block NSMutableString *testString = [[NSMutableString alloc]initWithString:@"Test"];
     NSURL *requestURL = [[NSURL alloc]initWithString: urlString];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc]initWithURL:requestURL];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -113,11 +114,13 @@ NSInteger const fahrenheitLowerBound = 20;
         if (statusCode == 200) {
             NSLog(@"Data from the URL was downloaded successfully");
             jsonDictionary =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-//            NSLog(@"This is what the jsonDictionary looks like after it is was saved: %@", jsonDictionary);
+            NSLog(@"This is what the jsonDictionary looks like after it is was saved: %@", jsonDictionary);
+            testString = [NSMutableString stringWithFormat:@"Changed test string"];
         }
     }];
     [task resume];
     
+    NSLog(@"This is what testString equals: %@", testString);
     NSLog(@"This is what the jsonDictionary looks like before it is returned: %@", jsonDictionary);
     return jsonDictionary;
 }
