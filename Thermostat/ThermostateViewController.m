@@ -64,18 +64,43 @@ NSInteger const fahrenheitLowerBound = 20;
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"%@", @"Core location has a position.");
+    
+    [self updateOutsideCurrentTemperatureLabelWithTemperature:[self parseJSONDictionaryForCurrentTemperature:[self jsonFromURLString:[self forecastURLFromLocation:self.locationManager.location]]]];
+    
+    [self.locationManager stopUpdatingLocation];
+}
+
+- (void) locationManager:(CLLocationManager *)manager
+        didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", @"Core location can't get a fix.");
+}
+
+- (void) getLocationData {
     CLLocation *curPos = locationManager.location;
     NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
     NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
     NSLog(@"Lat: %@", latitude);
     NSLog(@"Long: %@", longitude);
-    
-    //JSONHandler *jsonHandler = [[JSONHandler alloc]init];
+}
+
+#pragma mark - Get Weather Data 
+
+- (NSString *) forecastURLFromLocation: (CLLocation *) location{
+    NSString *latitude = [[NSNumber numberWithDouble:location.coordinate.latitude] stringValue];
+    NSString *longitude = [[NSNumber numberWithDouble:location.coordinate.longitude] stringValue];
     NSString *urlString = [NSString stringWithFormat:@"https://api.forecast.io/forecast/ee590865b8cf07d544c96463ae5d47c5/%@,%@", latitude, longitude];
-    NSLog(@"%@", urlString);
+    return urlString;
+}
+
+#pragma mark - JSON Pull Methods
+
+
+- (NSMutableDictionary *) jsonFromURLString:(NSString *)urlString {
     
     
+    // You left off here. You read the documentation and it stated that if you used the __bool keyword, it would update the value of the block
+    __block NSMutableDictionary *jsonDictionary = [[NSMutableDictionary alloc] init];
     NSURL *requestURL = [[NSURL alloc]initWithString: urlString];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc]initWithURL:requestURL];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -86,46 +111,34 @@ NSInteger const fahrenheitLowerBound = 20;
         long statusCode = httpResponse.statusCode;
         
         if (statusCode == 200) {
-            NSLog(@"Data from the URL downloaded successfully");
-            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-            
-            NSString *string = [NSString stringWithFormat:@"%@", jsonDictionary[@"currently"][@"temperature"]];
-            NSLog(@"Current temperature outside pulled from Forecast.io : %@", string);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-               self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", string.floatValue, @"\u00B0"];
-            });
-            
+            NSLog(@"Data from the URL was downloaded successfully");
+            jsonDictionary =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//            NSLog(@"This is what the jsonDictionary looks like after it is was saved: %@", jsonDictionary);
         }
     }];
     [task resume];
     
-    [self.locationManager stopUpdatingLocation];
+    NSLog(@"This is what the jsonDictionary looks like before it is returned: %@", jsonDictionary);
+    return jsonDictionary;
+}
+
+
+- (float) parseJSONDictionaryForCurrentTemperature:(NSMutableDictionary *)dictionary {
     
+    NSLog(@"This is the dictionary that was recieved by parseJSONDictionaryForCurrentTemperature: %@", dictionary);
+    NSString *string = [NSString stringWithFormat:@"%@", dictionary[@"currently"][@"temperature"]];
+    NSLog(@"Current temperature outside pulled from Forecast.io : %@", string);
+    return string.floatValue;
 }
 
 
-
-- (void) locationManager:(CLLocationManager *)manager
-        didFailWithError:(NSError *)error
-{
-    NSLog(@"%@", @"Core location can't get a fix.");
-}
+#pragma mark - Updating View Methods
 
 
-- (void) getLocationData {
-    CLLocation *curPos = locationManager.location;
-    NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
-    NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
-    NSLog(@"Lat: %@", latitude);
-    NSLog(@"Long: %@", longitude);
-}
-
-
-#pragma mark - Updatng View Methods
-
-- (void) updateLocationView {
-    
+- (void) updateOutsideCurrentTemperatureLabelWithTemperature:(float) temperature  {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", temperature, @"\u00B0"];
+    });
 }
 
 // When the segemented control is pressed
