@@ -34,20 +34,20 @@ NSInteger const fahrenheitLowerBound = 20;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    // Create the core location manager object
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-    
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    [self.locationManager startUpdatingLocation];
-}
+ }
 
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    // Create the core location manager object
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
     
     // Make sure the temperature label is updated to the current slider temperature
     int value = (int) self.temperatureSliderOutlet.value;
@@ -62,26 +62,28 @@ NSInteger const fahrenheitLowerBound = 20;
 
 #pragma mark - Location Methods
 
+
+// Whenever a location is detected this method will run
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"%@", @"Core location has a position.");
+    // Recorded the new location values
     CLLocation *curPos = locationManager.location;
     NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
     NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
+    NSLog(@"%@", @"Location was added to locationManager");
     NSLog(@"Lat: %@", latitude);
     NSLog(@"Long: %@", longitude);
     
-    //JSONHandler *jsonHandler = [[JSONHandler alloc]init];
+    // Use the location coordinates to create a URL to call the Forecast.io API
     NSString *urlString = [NSString stringWithFormat:@"https://api.forecast.io/forecast/ee590865b8cf07d544c96463ae5d47c5/%@,%@", latitude, longitude];
     NSLog(@"%@", urlString);
     
-    
+    // Call the Forecast.io API
     NSURL *requestURL = [[NSURL alloc]initWithString: urlString];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc]initWithURL:requestURL];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
-        // This cast may not work
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         long statusCode = httpResponse.statusCode;
         
@@ -93,7 +95,7 @@ NSInteger const fahrenheitLowerBound = 20;
             NSLog(@"Current temperature outside pulled from Forecast.io : %@", string);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-               self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", string.floatValue, @"\u00B0"];
+                self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", string.floatValue, @"\u00B0"];
             });
             
         }
@@ -104,7 +106,7 @@ NSInteger const fahrenheitLowerBound = 20;
     
 }
 
-
+- (void)
 
 - (void) locationManager:(CLLocationManager *)manager
         didFailWithError:(NSError *)error
