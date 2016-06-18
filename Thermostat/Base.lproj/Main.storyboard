@@ -20,21 +20,18 @@
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="23" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="dty-fM-V2g">
                                 <rect key="frame" x="18" y="414" width="564" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fnh-QU-LcI"/>
+                                </constraints>
                                 <connections>
                                     <action selector="temperatureSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="DV9-cH-FZm"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1H-yx-b61">
-                                <rect key="frame" x="20" y="64" width="560" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="To8-oe-LG7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="69"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A8R-6P-ony">
                                 <rect key="frame" x="20" y="28" width="560" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="lp5-Fp-5Oh"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Celsius"/>
                                     <segment title="Fahrenheit"/>
@@ -43,21 +40,41 @@
                                     <action selector="temperatureUnitSegementedControlButton:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z1T-zw-MrU"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature Outside:    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gf5-sZ-qc1">
+                                <rect key="frame" x="20" y="64" width="560" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="9HQ-tg-e5X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1H-yx-b61">
+                                <rect key="frame" x="20" y="142" width="560" height="216"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="69"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="A8R-6P-ony" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Cgz-aC-54W"/>
-                            <constraint firstItem="A8R-6P-ony" firstAttribute="leading" secondItem="v1H-yx-b61" secondAttribute="leading" id="L4F-sj-gbc"/>
-                            <constraint firstItem="v1H-yx-b61" firstAttribute="trailing" secondItem="dty-fM-V2g" secondAttribute="trailing" id="Oog-Mt-kAX"/>
-                            <constraint firstItem="A8R-6P-ony" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dbc-lg-bvg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dty-fM-V2g" secondAttribute="bottom" constant="156" id="eWo-lB-2gb"/>
-                            <constraint firstItem="A8R-6P-ony" firstAttribute="trailing" secondItem="v1H-yx-b61" secondAttribute="trailing" id="nIS-6H-BgL"/>
-                            <constraint firstItem="v1H-yx-b61" firstAttribute="top" secondItem="A8R-6P-ony" secondAttribute="bottom" constant="8" symbolic="YES" id="pE6-Go-bax"/>
-                            <constraint firstItem="v1H-yx-b61" firstAttribute="leading" secondItem="dty-fM-V2g" secondAttribute="leading" id="xkL-b2-Yfh"/>
-                            <constraint firstItem="A8R-6P-ony" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="y2o-h0-SUR"/>
+                            <constraint firstItem="gf5-sZ-qc1" firstAttribute="leading" secondItem="v1H-yx-b61" secondAttribute="leading" id="34D-HW-HlM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dty-fM-V2g" secondAttribute="bottom" constant="156" id="6qE-Pe-xP8"/>
+                            <constraint firstItem="A8R-6P-ony" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="8zz-uq-aW3"/>
+                            <constraint firstItem="dty-fM-V2g" firstAttribute="top" secondItem="v1H-yx-b61" secondAttribute="bottom" constant="56" id="EiB-uc-6Kd"/>
+                            <constraint firstItem="A8R-6P-ony" firstAttribute="leading" secondItem="gf5-sZ-qc1" secondAttribute="leading" id="dBq-a7-IP7"/>
+                            <constraint firstItem="v1H-yx-b61" firstAttribute="leading" secondItem="dty-fM-V2g" secondAttribute="leading" id="dGM-1u-eg3"/>
+                            <constraint firstItem="A8R-6P-ony" firstAttribute="trailing" secondItem="gf5-sZ-qc1" secondAttribute="trailing" id="fS0-l4-MCA"/>
+                            <constraint firstItem="gf5-sZ-qc1" firstAttribute="top" secondItem="A8R-6P-ony" secondAttribute="bottom" constant="8" symbolic="YES" id="hSk-mF-ufP"/>
+                            <constraint firstItem="A8R-6P-ony" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jCh-Z4-g6r"/>
+                            <constraint firstItem="v1H-yx-b61" firstAttribute="top" secondItem="gf5-sZ-qc1" secondAttribute="bottom" constant="8" symbolic="YES" id="rKA-F3-f23"/>
+                            <constraint firstItem="A8R-6P-ony" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uUd-Xe-KJi"/>
+                            <constraint firstItem="v1H-yx-b61" firstAttribute="trailing" secondItem="dty-fM-V2g" secondAttribute="trailing" id="zIi-qN-kSj"/>
+                            <constraint firstItem="gf5-sZ-qc1" firstAttribute="trailing" secondItem="v1H-yx-b61" secondAttribute="trailing" id="zhe-8E-3dk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentTemperatureOutsideLabel" destination="gf5-sZ-qc1" id="212-qZ-YZj"/>
                         <outlet property="temperatureLabel" destination="v1H-yx-b61" id="Lvs-4O-HTK"/>
                         <outlet property="temperatureSliderOutlet" destination="dty-fM-V2g" id="HdR-cA-N8x"/>
                         <outlet property="temperatureUnitSwitchSegmentedControl" destination="A8R-6P-ony" id="SCs-rP-pgs"/>

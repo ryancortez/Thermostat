@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *temperatureUnitSwitchSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 @property (weak, nonatomic) IBOutlet UISlider *temperatureSliderOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *currentTemperatureOutsideLabel;
 
 
 @end
@@ -33,7 +34,15 @@ NSInteger const fahrenheitLowerBound = 20;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    // Create the core location manager object
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
 }
 
 
@@ -47,7 +56,7 @@ NSInteger const fahrenheitLowerBound = 20;
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self. locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingLocation];
 }
 
 
@@ -56,7 +65,47 @@ NSInteger const fahrenheitLowerBound = 20;
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     NSLog(@"%@", @"Core location has a position.");
+    CLLocation *curPos = locationManager.location;
+    NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
+    NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
+    NSLog(@"Lat: %@", latitude);
+    NSLog(@"Long: %@", longitude);
+    
+    //JSONHandler *jsonHandler = [[JSONHandler alloc]init];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.forecast.io/forecast/ee590865b8cf07d544c96463ae5d47c5/%@,%@", latitude, longitude];
+    NSLog(@"%@", urlString);
+    
+    
+    NSURL *requestURL = [[NSURL alloc]initWithString: urlString];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc]initWithURL:requestURL];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        // This cast may not work
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        long statusCode = httpResponse.statusCode;
+        
+        if (statusCode == 200) {
+            NSLog(@"Data from the URL downloaded successfully");
+            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+            
+            NSString *string = [NSString stringWithFormat:@"%@", jsonDictionary[@"currently"][@"temperature"]];
+            NSLog(@"Current temperature outside pulled from Forecast.io : %@", string);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+               self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", string.floatValue, @"\u00B0"];
+            });
+            
+        }
+    }];
+    [task resume];
+    
+    [self.locationManager stopUpdatingLocation];
+    
 }
+
+
+
 - (void) locationManager:(CLLocationManager *)manager
         didFailWithError:(NSError *)error
 {
