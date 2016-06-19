@@ -10,5 +10,12 @@
 
 @implementation Weather
 
+- (instancetype) initWithTemperature: (NSNumber *) temperature {
+    self = [super init];
+    
+    self.temperature = temperature;
+    
+    return self;
+}
 
 @end

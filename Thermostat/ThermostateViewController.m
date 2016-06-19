@@ -124,8 +124,8 @@ NSInteger const fahrenheitLowerBound = 20;
 
 #pragma mark - Updatng View Methods
 
-- (void) updateLocationView {
-    
+- (void) updateWeatherLabelWithWeather:(Weather *) weather {
+    self.currentTemperatureOutsideLabel.text = [NSString stringWithFormat:@"Temperature Outside: %.0f%@", weather.temperature.floatValue, @"\u00B0"];
 }
 
 // When the segemented control is pressed

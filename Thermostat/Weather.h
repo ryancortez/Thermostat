@@ -12,6 +12,8 @@
 @interface Weather : NSObject
 
 @property CLLocation *location;
-@property float temperature;
+@property NSNumber *temperature;
+
+- (instancetype) initWithTemperature: (NSNumber *) temperature;
 
 @end
