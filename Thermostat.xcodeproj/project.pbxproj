@@ -64,16 +64,9 @@
 		942942001D13104A0032D1AF /* Thermostat */ = {
 			isa = PBXGroup;
 			children = (
-				942942041D13104A0032D1AF /* AppDelegate.h */,
-				942942051D13104A0032D1AF /* AppDelegate.m */,
-				942942071D13104A0032D1AF /* ThermostateViewController.h */,
-				942942081D13104A0032D1AF /* ThermostateViewController.m */,
-				9460C76B1D1701F90012DD50 /* Weather.h */,
-				9460C76C1D1701F90012DD50 /* Weather.m */,
-				9429420A1D13104A0032D1AF /* Main.storyboard */,
-				9429420D1D13104A0032D1AF /* Assets.xcassets */,
-				9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */,
-				942942121D13104A0032D1AF /* Info.plist */,
+				9460C76E1D171FB40012DD50 /* Controllers */,
+				9460C7701D171FB80012DD50 /* Model */,
+				9460C76F1D171FB60012DD50 /* Views */,
 				942942011D13104A0032D1AF /* Supporting Files */,
 			);
 			path = Thermostat;
@@ -82,10 +75,41 @@
 		942942011D13104A0032D1AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				942942041D13104A0032D1AF /* AppDelegate.h */,
+				942942051D13104A0032D1AF /* AppDelegate.m */,
+				942942121D13104A0032D1AF /* Info.plist */,
 				946EDEB71D1384290044634B /* CoreLocation.framework */,
 				942942021D13104A0032D1AF /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9460C76E1D171FB40012DD50 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				942942071D13104A0032D1AF /* ThermostateViewController.h */,
+				942942081D13104A0032D1AF /* ThermostateViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9460C76F1D171FB60012DD50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9429420D1D13104A0032D1AF /* Assets.xcassets */,
+				9429420A1D13104A0032D1AF /* Main.storyboard */,
+				9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9460C7701D171FB80012DD50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9460C76B1D1701F90012DD50 /* Weather.h */,
+				9460C76C1D1701F90012DD50 /* Weather.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
