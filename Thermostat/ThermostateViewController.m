@@ -106,8 +106,6 @@ NSInteger const fahrenheitLowerBound = 20;
     
 }
 
-- (void)
-
 - (void) locationManager:(CLLocationManager *)manager
         didFailWithError:(NSError *)error
 {

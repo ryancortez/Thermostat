@@ -13,6 +13,7 @@
 		9429420C1D13104A0032D1AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9429420A1D13104A0032D1AF /* Main.storyboard */; };
 		9429420E1D13104A0032D1AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9429420D1D13104A0032D1AF /* Assets.xcassets */; };
 		942942111D13104A0032D1AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */; };
+		9460C76D1D1701F90012DD50 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9460C76C1D1701F90012DD50 /* Weather.m */; };
 		946EDEB81D1384290044634B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946EDEB71D1384290044634B /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		9429420D1D13104A0032D1AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		942942101D13104A0032D1AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		942942121D13104A0032D1AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9460C76B1D1701F90012DD50 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		9460C76C1D1701F90012DD50 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		946EDEB71D1384290044634B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -65,6 +68,8 @@
 				942942051D13104A0032D1AF /* AppDelegate.m */,
 				942942071D13104A0032D1AF /* ThermostateViewController.h */,
 				942942081D13104A0032D1AF /* ThermostateViewController.m */,
+				9460C76B1D1701F90012DD50 /* Weather.h */,
+				9460C76C1D1701F90012DD50 /* Weather.m */,
 				9429420A1D13104A0032D1AF /* Main.storyboard */,
 				9429420D1D13104A0032D1AF /* Assets.xcassets */,
 				9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9460C76D1D1701F90012DD50 /* Weather.m in Sources */,
 				942942091D13104A0032D1AF /* ThermostateViewController.m in Sources */,
 				942942061D13104A0032D1AF /* AppDelegate.m in Sources */,
 				942942031D13104A0032D1AF /* main.m in Sources */,
