@@ -70,7 +70,6 @@ NSInteger const fahrenheitLowerBound = 20;
     CLLocation *curPos = manager.location;
     NSString *latitude = [[NSNumber numberWithDouble:curPos.coordinate.latitude] stringValue];
     NSString *longitude = [[NSNumber numberWithDouble:curPos.coordinate.longitude] stringValue];
-    NSLog(@"%@", @"Location was added to locationManager");
     NSLog(@"Lat: %@", latitude);
     NSLog(@"Long: %@", longitude);
     
