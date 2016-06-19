@@ -1,12 +1,12 @@
 //
-//  ForecastHandler.m
+//  WeatherForecastHandler
 //  Thermostat
 //
 //  Created by Ryan on 6/19/16.
 //  Copyright © 2016 Ryan Cortez. All rights reserved.
 //
 
-#import "ForecastHandler.h"
+#import "WeatherForecastHandler.h"
 
 
 @implementation WeatherForecastHandler

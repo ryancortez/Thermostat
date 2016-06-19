@@ -15,7 +15,7 @@
 		942942111D13104A0032D1AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9429420F1D13104A0032D1AF /* LaunchScreen.storyboard */; };
 		9460C76D1D1701F90012DD50 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9460C76C1D1701F90012DD50 /* Weather.m */; };
 		9460C7731D1720530012DD50 /* JSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9460C7721D1720530012DD50 /* JSONHandler.m */; };
-		9460C7761D1720670012DD50 /* ForecastHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9460C7751D1720670012DD50 /* ForecastHandler.m */; };
+		9460C7761D1720670012DD50 /* WeatherForecastHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9460C7751D1720670012DD50 /* WeatherForecastHandler.m */; };
 		946EDEB81D1384290044634B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946EDEB71D1384290044634B /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,8 +34,8 @@
 		9460C76C1D1701F90012DD50 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		9460C7711D1720530012DD50 /* JSONHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHandler.h; sourceTree = "<group>"; };
 		9460C7721D1720530012DD50 /* JSONHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHandler.m; sourceTree = "<group>"; };
-		9460C7741D1720670012DD50 /* ForecastHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastHandler.h; sourceTree = "<group>"; };
-		9460C7751D1720670012DD50 /* ForecastHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastHandler.m; sourceTree = "<group>"; };
+		9460C7741D1720670012DD50 /* WeatherForecastHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherForecastHandler.h; sourceTree = "<group>"; };
+		9460C7751D1720670012DD50 /* WeatherForecastHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastHandler.m; sourceTree = "<group>"; };
 		946EDEB71D1384290044634B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -116,8 +116,8 @@
 				9460C76C1D1701F90012DD50 /* Weather.m */,
 				9460C7711D1720530012DD50 /* JSONHandler.h */,
 				9460C7721D1720530012DD50 /* JSONHandler.m */,
-				9460C7741D1720670012DD50 /* ForecastHandler.h */,
-				9460C7751D1720670012DD50 /* ForecastHandler.m */,
+				9460C7741D1720670012DD50 /* WeatherForecastHandler.h */,
+				9460C7751D1720670012DD50 /* WeatherForecastHandler.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 				9460C7731D1720530012DD50 /* JSONHandler.m in Sources */,
 				942942061D13104A0032D1AF /* AppDelegate.m in Sources */,
 				942942031D13104A0032D1AF /* main.m in Sources */,
-				9460C7761D1720670012DD50 /* ForecastHandler.m in Sources */,
+				9460C7761D1720670012DD50 /* WeatherForecastHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

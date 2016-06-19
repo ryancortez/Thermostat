@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Weather.h"
+#import "JSONHandler.h"
 
-@interface WeatherForecastHandler : NSObject
+@interface WeatherForecastHandler : JSONHandler
 
 - (Weather *) parseJSONForCurrentWeather: (NSDictionary *) json;
 - (NSURL *) weatherForecastAPICallFromLocation: (CLLocation *) location;
